@@ -28,20 +28,6 @@ function _tsh {
     # completion area for subcommands
     function _commands {
         local -a commands
-        # commands=(
-        #     'help:Show help.'
-        #     'version:Print the tsh client and Proxy server versions for the current context.'
-        #     'ssh:Run shell or execute a command on a remote SSH node'
-        #     'join:Join the active SSH session'
-        #     'play:Replay the recorded SSH session'
-        #     'scp:Secure file copy'
-        #     'ls:List remote SSH nodes'
-        #     'login:Log in to a cluster and retrieve the session certificate'
-        #     'logout:Delete a cluster certificate'
-        #     'status:Display the list of proxy servers and retrieved certificates'
-        #     'env:Print commands to set Teleport session environment variables'
-        #     'config:Print OpenSSH configuration details'
-        # )
 
         commands=(
             'help:Show help.'

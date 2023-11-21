@@ -9,6 +9,6 @@ source to the file:
 <br>
 `source <(cat ~/.tsh/completion.bash)`
 
-You can append the above command to the end of the ~/.zshrc file to run automatically after login 
+You can append the above command to the end of the ~/.zshrc file to run automatically after openning terminal 
 <br>
 `echo "source <(cat ~/.tsh/completion.bash)" >> ~/.zshrc`

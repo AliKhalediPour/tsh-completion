@@ -96,6 +96,9 @@ function _tsh {
         "*::arg:->args"
 
     case $line[1] in
+        apps)
+            _tsh_apps
+        ;;
         proxy)
             _tsh_proxy
         ;;
@@ -215,6 +218,44 @@ function _tsh_scp {
         fi
         ;;
     esac
+}
+
+
+function _tsh_apps {
+    local commands=(
+        "ls:List available applications." \
+        "login:Retrieve short-lived certificate for an app." \
+        "logout:Remove app certificate." \
+        "config:Print app connection information."
+    )
+
+    _describe 'command' commands
+    _arguments $c \
+        $global_args \
+      "-l[Remote host login]" \
+      "--login[Remote host login]" \
+      "--proxy[Teleport proxy address]" \
+      "--user[Teleport user, defaults to current local user]" \
+      "--ttl[Minutes to live for a session]" \
+      "-i[Identity file]" \
+      "--identity[Identity file]" \
+      "--cert-format[SSH certificate format]" \
+      "--no-insecure[Do not verify server's certificate and host name. Use only in test environments]" \
+      "--auth[Specify the name of authentication connector to use.]" \
+      "--no-skip-version-check[Skip version checking between server and client.]" \
+      "-d[Verbose logging to stdout]" \
+      "--no-debug[Verbose logging to stdout]" \
+      "--add-keys-to-agent[Controls how keys are handled. Valid values are (auto no yes only).]" \
+      "-k[Controls how keys are handled. Valid values are (auto no yes only).]" \
+      "--no-enable-escape-sequences[Enable support for SSH escape sequences. Type '~?' during an SSH session to list supported sequences. Default is enabled.]" \
+      "--bind-addr[Override host:port used when opening a browser for cluster logins]" \
+      "--mfa-mode[Preferred mode for MFA and Passwordless assertions (auto, cross-platform, platform, otp)]" \
+      "--no-headless[Use headless login. Shorthand for --auth=headless.]" \
+      "--mlock[Determines whether process memory will be locked and whether failure to do so will be accepted (off, auto, best_effort, strict).]" \
+      "--piv-slot[Specify a PIV slot key to use for Hardware Key support instead of the default. Ex: "9d"]" \
+      "-J[SSH jumphost]" \
+      "--jumphost[SSH jumphost]" 
+
 }
 
 function _tsh_proxy {

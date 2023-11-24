@@ -99,6 +99,9 @@ function _tsh {
         apps)
             _tsh_apps
         ;;
+        recordings)
+            _tsh_recordings
+        ;;
         proxy)
             _tsh_proxy
         ;;
@@ -259,6 +262,41 @@ function _tsh_apps {
       "-J[SSH jumphost]" \
       "--jumphost[SSH jumphost]" 
 
+}
+
+
+function _tsh_recordings {
+    local commands=(
+        "ls:List recorded sessions." \
+        "export:Export recorded desktop sessions to video."
+    )
+
+    _describe 'command' commands
+    _arguments $C \
+        $global_args \
+        "-l[Remote host login]" \
+        "--login[Remote host login]" \
+        "--proxy[Teleport proxy address]" \
+        "--user[Teleport user, defaults to current local user]" \
+        "--ttl[Minutes to live for a session]" \
+        "-i[Identity file]" \
+        "--identity[Identity file]" \
+        "--cert-format[SSH certificate format]" \
+        "--no-insecure[Do not verify server's certificate and host name. Use only in test environments]" \
+        "--auth[Specify the name of authentication connector to use.]" \
+        "--no-skip-version-check[Skip version checking between server and client.]" \
+        "-d[Verbose logging to stdout]" \
+        "--no-debug[Verbose logging to stdout]" \
+        "-k[Controls how keys are handled. Valid values are (auto no yes only).]" \
+        "--add-keys-to-agent[Controls how keys are handled. Valid values are (auto no yes only).]" \
+        "--no-enable-escape-sequences[Enable support for SSH escape sequences. Type '~?' during an SSH session to list supported sequences. Default is enabled.]" \
+        "--bind-addr[Override host:port used when opening a browser for cluster logins]" \
+        "--mfa-mode[Preferred mode for MFA and Passwordless assertions (auto, cross-platform, platform, otp)]" \
+        "--no-headless[Use headless login. Shorthand for --auth=headless.]" \
+        "--mlock[Determines whether process memory will be locked and whether failure to do so will be accepted (off, auto, best_effort, strict).]" \
+        "--piv-slot[Specify a PIV slot key to use for Hardware Key support instead of the default. Ex: "9d"]" \
+        "-J[SSH jumphost]" \
+        "--jumphost[SSH jumphost]"
 }
 
 function _tsh_proxy {
